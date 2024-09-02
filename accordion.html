@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accordion</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <style>
+    body {
+      background-color: hsla(0, 0%, 90%, 0.499);
+    }
+    .accordion {
+      width: 40%;
+      margin-bottom: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      transition: border-top 0.3s ease-in-out;
+      border-top: 3px solid transparent;
+    }
+    .accordion-choice {
+      border-top: 3px solid rgb(45, 153, 54);
+    }
+    .accordion-header-choice .accordion-title {
+      color: rgb(
+        45,
+        153,
+        54
+      ) !important; /* Ghi đè màu sắc cho accordion-title */
+    }
+
+    .accordion-header-choice .number {
+      color: rgb(45, 153, 54) !important; /* Ghi đè màu sắc cho number */
+    }
+
+    .accordion-header {
+      position: relative;
+      color: #000;
+      font-size: 24px;
+      font-weight: 600;
+      padding: 10px 20px;
+    }
+    .number {
+      margin-right: 15px;
+      color: #00000059;
+    }
+    .accordion-content {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+    .accordion-header[data-bs-toggle="collapse"]::after {
+      border: solid;
+      border-width: 0 0.075rem 0.075rem 0;
+      content: "";
+      display: inline-block;
+      padding: 2px;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: rotate(-135deg);
+      transition: all 0.3s ease-out;
+    }
+
+    .accordion-header[data-bs-toggle="collapse"].collapsed::after {
+      transform: rotate(45deg);
+      transition: all 0.3s ease-out;
+    }
+    .accordion-text{
+        font-size: 18px;
+        font-weight: 600;
+    }
+  </style>
+  <body>
+    <div
+      class="wrapper d-flex flex-column align-items-center justify-content-center"
+    >
+      <div class="accordion mt-3">
+        <div
+          class="accordion-header"
+          data-bs-toggle="collapse"
+          href="#collapseExample01"
+          role="button"
+          aria-expanded="false"
+          aria-controls="collapseExample01"
+        >
+          <span class="number">01</span>
+          <span class="accordion-title">Where are these chairs assembled?</span>
+        </div>
+        <div class="accordion-content collapse" id="collapseExample01">
+          <p class="accordion-text">
+            Our chairs are assembled in various facilities around the world, depending on the specific design and manufacturing requirements. The assembly locations are chosen based on efficiency, quality control, and availability of materials.
+          </p>
+          <ul class="accordion-list">
+            <li class="accordion-list_item">
+              We use state-of-the-art machinery to ensure precision in every assembly step.
+            </li>
+            <li class="accordion-list_item">
+              Our assembly teams are highly trained to meet stringent quality standards.
+            </li>
+            <li class="accordion-list_item">
+              Components are sourced globally to maintain high standards of quality and durability.
+            </li>
+            <li class="accordion-list_item">
+              Each facility adheres to strict environmental regulations to minimize impact.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion">
+        <div
+          class="accordion-header"
+          data-bs-toggle="collapse"
+          href="#collapseExample02"
+          role="button"
+          aria-expanded="false"
+          aria-controls="collapseExample02"
+        >
+          <span class="number">02</span>
+          <span class="accordion-title">What materials are used for these chairs?</span>
+        </div>
+        <div class="accordion-content collapse" id="collapseExample02">
+          <p class="accordion-text">
+            Our chairs are constructed using a variety of high-quality materials to ensure comfort, durability, and style. Each material is selected to meet our rigorous standards for performance and aesthetics.
+          </p>
+          <ul class="accordion-list">
+            <li class="accordion-list_item">
+              The frame is made from premium hardwood or metal, providing stability and strength.
+            </li>
+            <li class="accordion-list_item">
+              Upholstery options include durable fabrics and genuine leather, chosen for their comfort and longevity.
+            </li>
+            <li class="accordion-list_item">
+              Padding and cushioning materials are selected for their resilience and comfort.
+            </li>
+            <li class="accordion-list_item">
+              Eco-friendly finishes are applied to enhance appearance and environmental responsibility.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion">
+        <div
+          class="accordion-header"
+          data-bs-toggle="collapse"
+          href="#collapseExample03"
+          role="button"
+          aria-expanded="false"
+          aria-controls="collapseExample03"
+        >
+          <span class="number">03</span>
+          <span class="accordion-title">How can I care for these chairs?</span>
+        </div>
+        <div class="accordion-content collapse" id="collapseExample03">
+          <p class="accordion-text">
+            Proper care and maintenance of your chairs will extend their lifespan and keep them looking new. Follow these guidelines to ensure the longevity of your furniture.
+          </p>
+          <ul class="accordion-list">
+            <li class="accordion-list_item">
+              Clean the chairs regularly with a soft, damp cloth to remove dust and dirt.
+            </li>
+            <li class="accordion-list_item">
+              Avoid placing the chairs in direct sunlight to prevent fading and discoloration.
+            </li>
+            <li class="accordion-list_item">
+              Use appropriate cleaning products for the upholstery to maintain its appearance.
+            </li>
+            <li class="accordion-list_item">
+              Periodically check and tighten any loose screws or joints to ensure stability.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', function() {
+        // Đối tượng hiện tại được click
+        const currentAccordion = this.parentElement;
+        const currentContent = this.nextElementSibling;
+
+        // Kiểm tra trạng thái mở hoặc đóng
+        const isCollapsed = currentContent.classList.contains('show');
+
+        // Đóng tất cả các accordion khác
+        document.querySelectorAll('.accordion').forEach(accordion => {
+            if (accordion !== currentAccordion) {
+                const content = accordion.querySelector('.accordion-content');
+                const header = accordion.querySelector('.accordion-header');
+
+                // Nếu accordion này đang mở, hãy đóng nó
+                if (content.classList.contains('show')) {
+                    const bsCollapse = new bootstrap.Collapse(content, {toggle: false});
+                    bsCollapse.hide();
+                }
+
+                // Xóa class 'accordion-choice' và 'accordion-header-choice' khỏi accordion khác
+                accordion.classList.remove('accordion-choice');
+                header.classList.remove('accordion-header-choice');
+            }
+        });
+
+        // Nếu accordion này đang đóng, hãy mở nó và thêm class
+        if (!isCollapsed) {
+            currentAccordion.classList.add('accordion-choice'); // Thêm vào accordion
+            this.classList.add('accordion-header-choice'); // Thêm vào accordion-header
+        }
+    });
+
+    // Lắng nghe sự kiện ẩn collapse
+    header.nextElementSibling.addEventListener('hidden.bs.collapse', function () {
+        // Xóa class khi accordion bị ẩn
+        header.parentElement.classList.remove('accordion-choice');
+        header.classList.remove('accordion-header-choice');
+    });
+});
+
+    </script>
+  </body>
+</html>
